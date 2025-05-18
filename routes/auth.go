@@ -20,7 +20,7 @@ func AuthRoutes(app *fiber.App) {
 func LoginHandler(c *fiber.Ctx) error {
 
 	godotenv.Load()
-	var authSecret = os.Getenv("AUTH_SECRET")
+	var authSecret = []byte(os.Getenv("AUTH_SECRET"))
 	bodyBytes := c.Body()
 	fmt.Println("Raw request body:", string(bodyBytes))
 	var existingUser models.User
